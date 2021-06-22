@@ -5,15 +5,26 @@ namespace App\Controller;
 use W1020\Table as ORMTable;
 use App\View\View;
 
-class Table extends AbstractController
+/**
+ * Class Table
+ * @package App\Controller
+ */
+abstract class Table extends AbstractController
 {
+    /**
+     * @var ORMTable
+     */
     protected ORMTable $model;
+    /**
+     * @var string
+     */
+    protected string $tableName = "";
 
     public function __construct()
     {
         parent::__construct();
         $config = include __DIR__ . "/../../config.php";
-//        print_r($config);
+        $config["table"] = $this->tableName;
         $this->model = new ORMTable($config);
     }
 
@@ -23,7 +34,6 @@ class Table extends AbstractController
      */
     public function actionShow()
     {
-//        print_r($this->model->get());
         $headers["id"] = "№";
 
         foreach ($this->model->columnComments() as $key => $value) {
@@ -35,7 +45,11 @@ class Table extends AbstractController
 
         $this
             ->view
-            ->setData(["table" => $this->model->get(), "comments" => $headers])
+            ->setData([
+                "table" => $this->model->get(),
+                "comments" => $headers,
+                "controllerName" => $this->getCurrentClass()
+            ])
             ->setTemplate("Table/show")
             ->view();
     }
@@ -45,10 +59,8 @@ class Table extends AbstractController
      */
     public function actionDel()
     {
-//        print_r($_GET);
         $this->model->del($_GET["id"]);
-//        header("Location: ?type=Table&action=show");
-        $this->redirect("?type=Table&action=show");
+        $this->redirect("?type={$this->getCurrentClass()}&action=show");
     }
 
     /**
@@ -58,7 +70,10 @@ class Table extends AbstractController
     {
         $this
             ->view
-            ->setData($this->model->columnComments())
+            ->setData([
+                "comments" => $this->model->columnComments(),
+                "controllerName" => $this->getCurrentClass()
+            ])
             ->setTemplate("Table/add")
             ->view();
     }
@@ -68,10 +83,8 @@ class Table extends AbstractController
      */
     public function actionAdd()
     {
-//        print_r($_POST);
         $this->model->ins($_POST);
-        $this->redirect("?type=Table&action=show");
-
+        $this->redirect("?type={$this->getCurrentClass()}&action=show");
     }
 
     /**
@@ -86,7 +99,8 @@ class Table extends AbstractController
             ->setData([
                 "comments" => $this->model->columnComments(),
                 "row" => $row,
-                "id" => $_GET["id"]
+                "id" => $_GET["id"],
+                "controllerName" => $this->getCurrentClass()
             ])
             ->setTemplate("Table/edit")
             ->view();
@@ -98,7 +112,7 @@ class Table extends AbstractController
     public function actionEdit()
     {
         $this->model->upd($_GET["id"], $_POST);
-        $this->redirect("?type=Table&action=show");
+        $this->redirect("?type={$this->getCurrentClass()}&action=show");
     }
 
 }

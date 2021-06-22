@@ -2,7 +2,7 @@
 //print_r($this->data);
 ?>
 
-<form action="?type=Table&action=edit&id=<?= $this->data["id"] ?>" method="post">
+<form action="?type=<?=$this->data['controllerName']?>&action=edit&id=<?= $this->data["id"] ?>" method="post">
     <?php
     foreach ($this->data["row"] as $field => $value) {
         echo $this->data["comments"][$field]."<br>";
