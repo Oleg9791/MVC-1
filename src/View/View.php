@@ -4,7 +4,7 @@ namespace App\View;
 
 class View
 {
-    protected array $data;
+    protected array $data = [];
     protected string $template;
 
     /**
@@ -14,6 +14,16 @@ class View
     public function setData(array $data): static
     {
         $this->data = $data;
+        return $this;
+    }
+
+    /**
+     * @param array $data
+     * @return $this
+     */
+    public function addData(array $data): static
+    {
+        $this->data = array_merge($this->data, $data);
         return $this;
     }
 

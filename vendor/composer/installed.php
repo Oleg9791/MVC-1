@@ -1,0 +1,41 @@
+<?php return array(
+    'root' => array(
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'type' => 'library',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'reference' => 'e57dc7c54f2b9b18da080b3302467deeeb95a3e3',
+        'name' => '__root__',
+        'dev' => true,
+    ),
+    'versions' => array(
+        '__root__' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'reference' => 'e57dc7c54f2b9b18da080b3302467deeeb95a3e3',
+            'dev_requirement' => false,
+        ),
+        'w1020/html' => array(
+            'pretty_version' => 'v0.0.5',
+            'version' => '0.0.5.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../w1020/html',
+            'aliases' => array(),
+            'reference' => '4d8889bccda6cff74ab6e9119ecaef5c8c9a7904',
+            'dev_requirement' => false,
+        ),
+        'w1020/orm' => array(
+            'pretty_version' => 'v2.1.10',
+            'version' => '2.1.10.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../w1020/orm',
+            'aliases' => array(),
+            'reference' => '56bb92a703bf4d78c4e510033f26a60e5be51dd5',
+            'dev_requirement' => false,
+        ),
+    ),
+);

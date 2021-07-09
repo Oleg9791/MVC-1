@@ -11,6 +11,7 @@ abstract class AbstractController
     public function __construct()
     {
         $this->view = new View();
+        $this->view->setData(['controllerName' => $this->getCurrentClass()]);
     }
 
     public function redirect(string $url): void
