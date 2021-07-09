@@ -34,11 +34,19 @@
                 <a class="nav-link<?= $this->data['controllerName'] == "Opros" ? " active" : "" ?>"
                    href="?type=Opros&action=show">Показать таблицу Opros</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link<?= $this->data['controllerName'] == "Users" ? " active" : "" ?>"
+                   href="?type=Users&action=show">Показать таблицу Users</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link<?= $this->data['controllerName'] == "Aut" ? " active" : "" ?>"
+                   href="?type=Aut&action=show">Войти</a>
+            </li>
 
         </ul>
     </div>
 </nav>
-
+<?=isset($_SESSION['user']['user_group'])?$_SESSION['user']['name']:""?>
 <?php
 $this->body();
 ?>
