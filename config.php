@@ -4,5 +4,6 @@ return [
     "username" => "root",
     "password" => "root",
     "dbname" => "guestbook",
+    "page_size" => 5
 //    "table" => "ved"
 ];

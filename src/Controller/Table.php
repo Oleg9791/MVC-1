@@ -19,12 +19,17 @@ abstract class Table extends AbstractController
      * @var string
      */
     protected string $tableName = "";
+    /**
+     * @var int
+     */
+    protected int $pageSize = 10;
 
     public function __construct()
     {
         parent::__construct();
         $config = include __DIR__ . "/../../config.php";
         $config["table"] = $this->tableName;
+        $this->pageSize = $config["page_size"];
         $this->model = new ORMTable($config);
     }
 
@@ -34,6 +39,7 @@ abstract class Table extends AbstractController
      */
     public function actionShow()
     {
+        $page = $_GET["page"] ?? 1;
         $headers["id"] = "№";
 
         foreach ($this->model->columnComments() as $key => $value) {
@@ -46,9 +52,11 @@ abstract class Table extends AbstractController
         $this
             ->view
             ->setData([
-                "table" => $this->model->get(),
+                "table" => $this->model->setPageSize($this->pageSize)->getPage($page),
                 "comments" => $headers,
-                "controllerName" => $this->getCurrentClass()
+                "controllerName" => $this->getCurrentClass(),
+                "activePage" => $page,
+                "pageCount" => $this->model->pageCount()
             ])
             ->setTemplate("Table/show")
             ->view();
