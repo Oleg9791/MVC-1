@@ -51,10 +51,10 @@ abstract class Table extends AbstractController
 
         $this
             ->view
-            ->setData([
+            ->addData([
                 "table" => $this->model->setPageSize($this->pageSize)->getPage($page),
                 "comments" => $headers,
-                "controllerName" => $this->getCurrentClass(),
+//                "controllerName" => $this->getCurrentClass(),
                 "activePage" => $page,
                 "pageCount" => $this->model->pageCount()
             ])
@@ -78,7 +78,7 @@ abstract class Table extends AbstractController
     {
         $this
             ->view
-            ->setData([
+            ->addData([
                 "comments" => $this->model->columnComments(),
                 "controllerName" => $this->getCurrentClass()
             ])
@@ -104,7 +104,7 @@ abstract class Table extends AbstractController
         unset($row["id"]);
         $this
             ->view
-            ->setData([
+            ->addData([
                 "comments" => $this->model->columnComments(),
                 "row" => $row,
                 "id" => $_GET["id"],

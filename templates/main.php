@@ -19,16 +19,20 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="?">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link<?= $this->data['controllerName'] == "Main" ? " active" : "" ?>" href="?">Home <span
+                            class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="?type=Ved&action=show">Показать таблицу Ved</a>
+                <a class="nav-link<?= $this->data['controllerName'] == "Ved" ? " active" : "" ?>"
+                   href="?type=Ved&action=show">Показать таблицу Ved</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="?type=Gb&action=show">Показать таблицу Gb</a>
+                <a class="nav-link<?= $this->data['controllerName'] == "Gb" ? " active" : "" ?>"
+                   href="?type=Gb&action=show">Показать таблицу Gb</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="?type=Opros&action=show">Показать таблицу Opros</a>
+                <a class="nav-link<?= $this->data['controllerName'] == "Opros" ? " active" : "" ?>"
+                   href="?type=Opros&action=show">Показать таблицу Opros</a>
             </li>
 
         </ul>
