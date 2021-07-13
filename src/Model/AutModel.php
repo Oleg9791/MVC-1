@@ -25,4 +25,19 @@ class AutModel extends ORMTable
         //print_r($this->query("SELECT * FROM `users` WHERE login='$login' AND pass='$pass'")[0]['user_group']);
     }
 
+    /**
+     * @param string $login
+     * @return bool
+     * @throws \Exception
+     */
+    public function checkUserExists(string $login): bool
+    {
+        return $this->query("SELECT COUNT(*) AS 'C' FROM `$this->tableName` WHERE `login`='$login'")[0]['C'];
+    }
+
+    public function addNewUser(string $login, string $pass, string $name, string $user_group): void
+    {
+        $this->runSQL("INSERT INTO `users`(`login`, `pass`, `name`, `user_group`) " .
+                         "VALUES ('$login','$pass','$name','$user_group')");
+    }
 }
