@@ -42,11 +42,13 @@
                 <a class="nav-link<?= $this->data['controllerName'] == "Aut" ? " active" : "" ?>"
                    href="?type=Aut&action=show">Войти</a>
             </li>
-
+            <li class="nav-item">
+                <a class="nav-link" href="?type=Aut&action=logout">Выйти</a>
+            </li>
         </ul>
     </div>
 </nav>
-<?=isset($_SESSION['user']['user_group'])?$_SESSION['user']['name']:""?>
+<?= isset($_SESSION['user']['user_group']) ? $_SESSION['user']['name'] : "" ?>
 <?php
 $this->body();
 ?>

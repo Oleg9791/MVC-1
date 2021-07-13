@@ -17,7 +17,7 @@ class Aut extends AbstractController
     {
         parent::__construct();
         $config = include __DIR__ . "/../../config.php";
-        $config["table"] = "Aut";
+        $config["table"] = "users";
         $this->model = new AutModel($config);
     }
 
@@ -43,4 +43,9 @@ class Aut extends AbstractController
 
     }
 
+    public function actionLogout(): void
+    {
+        unset($_SESSION['user']);
+        $this->redirect("?type=Aut&action=show");
+    }
 }
