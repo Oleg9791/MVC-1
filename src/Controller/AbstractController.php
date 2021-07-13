@@ -17,6 +17,7 @@ abstract class AbstractController
     public function redirect(string $url): void
     {
         header("Location: $url");
+        exit();
     }
 
     public function getCurrentClass(): string

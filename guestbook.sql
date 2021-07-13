@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июл 09 2021 г., 22:37
+-- Время создания: Июл 13 2021 г., 22:36
 -- Версия сервера: 8.0.19
 -- Версия PHP: 8.0.1
 
@@ -88,7 +88,14 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `login`, `pass`, `name`, `user_group`) VALUES
 (1, 'admin', '123', 'Максим Петрович', 'admin'),
-(3, 'user', '321', 'Ольга Юрьевна', 'user');
+(3, 'user', '321', 'Ольга Юрьевна', 'user'),
+(4, 'user2', '111', 'Сергей Игоревич', 'user'),
+(5, 'Oleg', '555', 'Олег Олегович', 'admin'),
+(6, 'user23', '999', 'Leo', 'guest'),
+(8, 'user555', '111', 'Jon', 'guest'),
+(9, 'user4444', '555', 'Leo', 'guest'),
+(10, 'user777', '888', 'Ольга', 'guest'),
+(11, 'user29898989', '111', 'Leo', 'guest');
 
 -- --------------------------------------------------------
 
@@ -168,7 +175,7 @@ ALTER TABLE `opros`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT '№', AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT '№', AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT для таблицы `ved`
