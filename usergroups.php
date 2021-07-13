@@ -5,12 +5,14 @@ return [
         "Gb",
         "Main",
         "Opros",
-        "Ved"
+        "Ved",
+        "Users"
     ],
     "user" => [
         "Aut",
         "Gb",
         "Main",
+        "Opros",
         "Ved"
     ],
     "guest" => [

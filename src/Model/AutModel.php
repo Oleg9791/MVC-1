@@ -16,7 +16,7 @@ class AutModel extends ORMTable
      */
     public function checkUser(string $login, string $pass): array
     {
-        return $this->query("SELECT * FROM `users` WHERE login='$login' AND pass='$pass'");
+        return $this->query("SELECT * FROM `$this->tableName` WHERE login='$login' AND pass='$pass'");
 //        if (empty($row)) {
 //            return false;
 //        } else {
