@@ -11,7 +11,7 @@ class AutModel extends ORMTable
     /**
      * @param string $login
      * @param string $pass
-     * @return array
+     * @return array<array>
      * @throws \Exception
      */
     public function checkUser(string $login, string $pass): array

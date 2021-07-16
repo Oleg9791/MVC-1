@@ -8,7 +8,7 @@ class Password
 {
     protected string $pass;
 
-    public function __construct($pass)
+    public function __construct(string $pass)
     {
         $this->setPass($pass);
     }
@@ -42,7 +42,7 @@ class Password
      */
     public function containsNumbers(): bool
     {
-        return preg_match_all("/[0-9]/", $this->pass);
+        return (bool) preg_match_all("/[0-9]/", $this->pass);
     }
 
     /** проверка на наличие кириллических букв
@@ -50,7 +50,7 @@ class Password
      */
     public function checkCyrillic(): bool
     {
-        return preg_match_all("/[а-я]/iu", $this->pass);
+        return (bool) preg_match_all("/[а-я]/iu", $this->pass);
     }
 
     /** проверка на наличие латинских букв
@@ -58,7 +58,7 @@ class Password
      */
     public function checkLatin(): bool
     {
-        return preg_match_all("/[a-z]/iu", $this->pass);
+        return (bool) preg_match_all("/[a-z]/iu", $this->pass);
     }
 
     /** проверка на наличие данных символов из шаблона
@@ -83,7 +83,7 @@ class Password
      */
     public function checkSpaceSymbol(): bool
     {
-        return preg_match_all("/\s/iu", $this->pass);
+        return (bool) preg_match_all("/\s/iu", $this->pass);
     }
 
 
