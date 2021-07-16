@@ -4,7 +4,7 @@ namespace App;
 
 class Router
 {
-    public function run()
+    public function run(): void
     {
         $type = $_GET["type"] ?? "Main";
         $action = "action" . ($_GET["action"] ?? "index");

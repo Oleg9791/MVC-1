@@ -4,11 +4,14 @@ namespace App\View;
 
 class View
 {
+    /**
+     * @var array<mixed>
+     */
     protected array $data = [];
     protected string $template;
 
     /**
-     * @param array $data
+     * @param array<mixed> $data
      * @return $this
      */
     public function setData(array $data): static
@@ -18,7 +21,7 @@ class View
     }
 
     /**
-     * @param array $data
+     * @param array<mixed> $data
      * @return $this
      */
     public function addData(array $data): static
@@ -37,12 +40,12 @@ class View
         return $this;
     }
 
-    public function view()
+    public function view(): void
     {
         include __DIR__ . "/../../templates/main.php";
     }
 
-    public function body()
+    public function body(): void
     {
         include __DIR__ . "/../../templates/$this->template.php";
     }

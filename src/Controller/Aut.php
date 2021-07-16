@@ -36,9 +36,12 @@ class Aut extends AbstractController
     {
         $ok = true;
 
-        $pass = new Password($_POST['pass1']);
+        $pass = new Password((string)$_POST['pass1']);
 
         if ($_POST['name'] == '') {
+            /**
+             * $_SESSION['warnings'] array<string>
+             */
             $_SESSION['warnings'][] = 'Имя не может быть пустым!';
             $ok = false;
         }

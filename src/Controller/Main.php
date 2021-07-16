@@ -8,7 +8,7 @@ use App\View\View;
 
 class Main extends AbstractController
 {
-    public function actionIndex()
+    public function actionIndex(): void
     {
         $this
             ->view

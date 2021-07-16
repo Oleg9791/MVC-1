@@ -11,6 +11,7 @@
 </head>
 <body>
 <?php
+
 include "menu_" . ($_SESSION['user']['user_group'] ?? 'guest') . ".php";
 ?>
 <?= isset($_SESSION['user']['user_group']) ? $_SESSION['user']['name'] : "" ?>
@@ -23,6 +24,9 @@ if (!empty($_SESSION['warnings'])) {
 }
 ?>
 <?php
+/**
+ * @var $this App\View\View
+ */
 $this->body();
 ?>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
