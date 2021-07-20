@@ -32,4 +32,14 @@ SQL;
             "$sql LIMIT " . (($page - 1) * $this->pageSize) . ",$this->pageSize;"
         );
     }
+
+    public function getGroupList()
+    {
+        $data = $this->query("SELECT `id`,`name` FROM `user_groups`");
+        $arr = [];
+        foreach ($data as $row) {
+            $arr[$row['id']] = $row['name'];
+        }
+        return $arr;
+    }
 }

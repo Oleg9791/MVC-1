@@ -12,7 +12,7 @@ class Main extends AbstractController
     {
         $this
             ->view
-            ->setTemplate("Main/index")
-            ->view();
+            ->setTemplate("Main/index");
+//            ->view();
     }
 }

@@ -59,8 +59,8 @@ abstract class Table extends AbstractController
                 "activePage" => $page,
                 "pageCount" => $this->model->pageCount()
             ])
-            ->setTemplate("Table/show")
-            ->view();
+            ->setTemplate("Table/show");
+//            ->view();
     }
 
     /**
@@ -83,8 +83,8 @@ abstract class Table extends AbstractController
                 "comments" => $this->model->columnComments(),
                 "controllerName" => $this->getCurrentClass()
             ])
-            ->setTemplate("Table/add")
-            ->view();
+            ->setTemplate("Table/add");
+//            ->view();
     }
 
     /**
@@ -111,8 +111,8 @@ abstract class Table extends AbstractController
                 "id" => $_GET["id"],
                 "controllerName" => $this->getCurrentClass()
             ])
-            ->setTemplate("Table/edit")
-            ->view();
+            ->setTemplate("Table/edit");
+//            ->view();
     }
 
     /**

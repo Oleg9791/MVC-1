@@ -18,6 +18,7 @@ class Router
                 $controller = new $controllerName();
                 if (method_exists($controller, $action)) {
                     $controller->{$action}();
+                    $controller?->view?->view();
                 } else {
 //                echo "Метод не найден";
                     header('HTTP/1.0 403 Forbidden');
