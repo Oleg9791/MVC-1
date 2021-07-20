@@ -12,9 +12,9 @@
 <body>
 <?php
 
-include "menu_" . ($_SESSION['user']['user_group'] ?? 'guest') . ".php";
+include "menu_" . ($_SESSION['user']['code'] ?? 'guest') . ".php";
 ?>
-<?= isset($_SESSION['user']['user_group']) ? $_SESSION['user']['name'] : "" ?>
+<?= isset($_SESSION['user']['code']) ? $_SESSION['user']['name'] : "" ?>
 <?php
 if (!empty($_SESSION['warnings'])) {
     foreach ($_SESSION['warnings'] as $warning) {

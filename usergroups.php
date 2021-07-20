@@ -6,7 +6,8 @@ return [
         "Main",
         "Opros",
         "Ved",
-        "Users"
+        "Users",
+        "UserGroups"
     ],
     "user" => [
         "Aut",

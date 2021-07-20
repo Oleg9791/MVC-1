@@ -95,6 +95,7 @@ class Aut extends AbstractController
         //print_r($_POST);
         //$_SESSION['user']
         $user = $this->model->checkUser($_POST['login'], $_POST['pass']);
+//        print_r($user);
         if (empty($user)) {
             $this->redirect("?type=Aut&action=show");
         } else {

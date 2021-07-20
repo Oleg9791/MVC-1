@@ -2,10 +2,10 @@
 -- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Хост: 127.0.0.1:3306
--- Время создания: Июл 13 2021 г., 22:36
--- Версия сервера: 8.0.19
--- Версия PHP: 8.0.1
+-- Host: 127.0.0.1:3306
+-- Generation Time: Jul 20, 2021 at 09:12 PM
+-- Server version: 8.0.19
+-- PHP Version: 8.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,15 +18,15 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `guestbook`
+-- Database: `w1020`
 --
-CREATE DATABASE IF NOT EXISTS `guestbook` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
-USE `guestbook`;
+CREATE DATABASE IF NOT EXISTS `w1020` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
+USE `w1020`;
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `gb`
+-- Table structure for table `gb`
 --
 
 CREATE TABLE `gb` (
@@ -36,7 +36,7 @@ CREATE TABLE `gb` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Дамп данных таблицы `gb`
+-- Dumping data for table `gb`
 --
 
 INSERT INTO `gb` (`id`, `message`, `name`) VALUES
@@ -48,7 +48,7 @@ INSERT INTO `gb` (`id`, `message`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `opros`
+-- Table structure for table `opros`
 --
 
 CREATE TABLE `opros` (
@@ -60,7 +60,7 @@ CREATE TABLE `opros` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Дамп данных таблицы `opros`
+-- Dumping data for table `opros`
 --
 
 INSERT INTO `opros` (`id`, `name`, `meropriatie`, `comment`, `phone`) VALUES
@@ -71,36 +71,50 @@ INSERT INTO `opros` (`id`, `name`, `meropriatie`, `comment`, `phone`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
   `id` int NOT NULL COMMENT '№',
-  `login` varchar(15) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'login',
-  `pass` varchar(15) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'password',
-  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'name',
-  `user_group` varchar(10) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'user_group'
+  `login` varchar(15) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'Логин',
+  `pass` varchar(15) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'Пароль',
+  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'Имя',
+  `user_groups_id` int NOT NULL COMMENT 'Группа'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Дамп данных таблицы `users`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `login`, `pass`, `name`, `user_group`) VALUES
-(1, 'admin', '123', 'Максим Петрович', 'admin'),
-(3, 'user', '321', 'Ольга Юрьевна', 'user'),
-(4, 'user2', '111', 'Сергей Игоревич', 'user'),
-(5, 'Oleg', '555', 'Олег Олегович', 'admin'),
-(6, 'user23', '999', 'Leo', 'guest'),
-(8, 'user555', '111', 'Jon', 'guest'),
-(9, 'user4444', '555', 'Leo', 'guest'),
-(10, 'user777', '888', 'Ольга', 'guest'),
-(11, 'user29898989', '111', 'Leo', 'guest');
+INSERT INTO `users` (`id`, `login`, `pass`, `name`, `user_groups_id`) VALUES
+(4, 'admin', '123', 'Иван Иванович', 1),
+(5, 'user', '321', 'Анатолий Николаевич', 1);
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `ved`
+-- Table structure for table `user_groups`
+--
+
+CREATE TABLE `user_groups` (
+  `id` int NOT NULL,
+  `name` varchar(50) COLLATE utf8_bin NOT NULL,
+  `code` varchar(10) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `user_groups`
+--
+
+INSERT INTO `user_groups` (`id`, `name`, `code`) VALUES
+(1, 'Администраторы', 'admin'),
+(2, 'Пользователи', 'user'),
+(3, 'Гости', 'guest');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ved`
 --
 
 CREATE TABLE `ved` (
@@ -110,7 +124,7 @@ CREATE TABLE `ved` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Дамп данных таблицы `ved`
+-- Dumping data for table `ved`
 --
 
 INSERT INTO `ved` (`id`, `fio`, `zp`) VALUES
@@ -127,61 +141,84 @@ INSERT INTO `ved` (`id`, `fio`, `zp`) VALUES
 (556, 'del', 250);
 
 --
--- Индексы сохранённых таблиц
+-- Indexes for dumped tables
 --
 
 --
--- Индексы таблицы `gb`
+-- Indexes for table `gb`
 --
 ALTER TABLE `gb`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `opros`
+-- Indexes for table `opros`
 --
 ALTER TABLE `opros`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `login` (`login`);
+  ADD UNIQUE KEY `login` (`login`),
+  ADD KEY `fk_users_user_groups_idx` (`user_groups_id`);
 
 --
--- Индексы таблицы `ved`
+-- Indexes for table `user_groups`
+--
+ALTER TABLE `user_groups`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ved`
 --
 ALTER TABLE `ved`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT для сохранённых таблиц
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT для таблицы `gb`
+-- AUTO_INCREMENT for table `gb`
 --
 ALTER TABLE `gb`
   MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id', AUTO_INCREMENT=54;
 
 --
--- AUTO_INCREMENT для таблицы `opros`
+-- AUTO_INCREMENT for table `opros`
 --
 ALTER TABLE `opros`
   MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT 'id', AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT для таблицы `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT '№', AUTO_INCREMENT=12;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT '№', AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT для таблицы `ved`
+-- AUTO_INCREMENT for table `user_groups`
+--
+ALTER TABLE `user_groups`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `ved`
 --
 ALTER TABLE `ved`
   MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT '№', AUTO_INCREMENT=559;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `fk_users_user_groups` FOREIGN KEY (`user_groups_id`) REFERENCES `user_groups` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -9,7 +9,7 @@ class Router
         $type = $_GET["type"] ?? "Main";
         $action = "action" . ($_GET["action"] ?? "index");
         $controllerName = "App\\Controller\\$type";
-        $userGroup = $_SESSION['user']['user_group'] ?? 'guest';
+        $userGroup = $_SESSION['user']['code'] ?? 'guest';
         $userGroups = include(__DIR__ . "/../usergroups.php");
         $allowedControllers = $userGroups[$userGroup];
 
