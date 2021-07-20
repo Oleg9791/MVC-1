@@ -24,12 +24,14 @@ class Aut extends AbstractController
 
     public function actionShow(): void
     {
-        $this->view->setTemplate("Aut/login")->view();
+        $this->view->setTemplate("Aut/login");
+//            ->view();
     }
 
     public function actionShowReg(): void
     {
-        $this->view->setTemplate("Aut/registration")->view();
+        $this->view->setTemplate("Aut/registration");
+//            ->view();
     }
 
     public function actionReg(): void

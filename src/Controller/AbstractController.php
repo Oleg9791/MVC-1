@@ -6,7 +6,7 @@ use App\View\View;
 
 abstract class AbstractController
 {
-    protected View $view;
+    public View $view;
 
     public function __construct()
     {
