@@ -8,7 +8,7 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
                 <a class="nav-link<?= $this->data['controllerName'] == "Main" ? " active" : "" ?>" href="?">Home <span
-                        class="sr-only">(current)</span></a>
+                            class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link<?= $this->data['controllerName'] == "Ved" ? " active" : "" ?>"
@@ -25,6 +25,10 @@
             <li class="nav-item">
                 <a class="nav-link<?= $this->data['controllerName'] == "Users" ? " active" : "" ?>"
                    href="?type=Users&action=show">Показать таблицу Users</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link<?= $this->data['controllerName'] == "UserGroups" ? " active" : "" ?>"
+                   href="?type=UserGroups&action=show">Показать таблицу UserGroups</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="?type=Aut&action=logout">Выйти</a>

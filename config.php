@@ -3,7 +3,7 @@ return [
     "servername" => "localhost",
     "username" => "root",
     "password" => "root",
-    "dbname" => "guestbook",
+    "dbname" => "w1020",
     "page_size" => 5
 //    "table" => "ved"
 ];
