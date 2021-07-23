@@ -26,7 +26,7 @@ class Users extends Table
         $this
             ->view
             ->addData(["groupList" => $this->model->getGroupList()])
-            ->setTemplate("Users/edit");
+            ->setTemplate("Users/add_edit");
     }
 
     public function actionShowAdd(): void
@@ -35,7 +35,7 @@ class Users extends Table
         $this
             ->view
             ->addData(["groupList" => $this->model->getGroupList()])
-            ->setTemplate("Users/add");
+            ->setTemplate("Users/add_edit");
 
     }
 }

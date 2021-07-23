@@ -40,7 +40,7 @@ abstract class Table extends AbstractController
     public function actionShow(): void
     {
         $page = $_GET["page"] ?? 1;
-        $headers=[];
+        $headers = [];
         $headers["id"] = "№";
 
         foreach ($this->model->columnComments() as $key => $value) {
@@ -77,23 +77,16 @@ abstract class Table extends AbstractController
      */
     public function actionShowAdd(): void
     {
+
         $this
             ->view
             ->addData([
                 "comments" => $this->model->columnComments(),
-                "controllerName" => $this->getCurrentClass()
+//                "controllerName" => $this->getCurrentClass(),
+                "action" => "?type=" . ($this->getCurrentClass()) . "&action=add"
             ])
-            ->setTemplate("Table/add");
+            ->setTemplate("Table/add_edit");
 //            ->view();
-    }
-
-    /**
-     * Добавляет новую строку
-     */
-    public function actionAdd(): void
-    {
-        $this->model->ins($_POST);
-        $this->redirect("?type={$this->getCurrentClass()}&action=show");
     }
 
     /**
@@ -108,12 +101,23 @@ abstract class Table extends AbstractController
             ->addData([
                 "comments" => $this->model->columnComments(),
                 "row" => $row,
-                "id" => $_GET["id"],
-                "controllerName" => $this->getCurrentClass()
+//                "id" => $_GET["id"],
+//                "controllerName" => $this->getCurrentClass(),
+                "action" => "?type=" . ($this->getCurrentClass()) . "&action=edit&id=$_GET[id]"
             ])
-            ->setTemplate("Table/edit");
+            ->setTemplate("Table/add_edit");
 //            ->view();
     }
+
+    /**
+     * Добавляет новую строку
+     */
+    public function actionAdd(): void
+    {
+        $this->model->ins($_POST);
+        $this->redirect("?type={$this->getCurrentClass()}&action=show");
+    }
+
 
     /**
      * Редактирует строку из таблицы
