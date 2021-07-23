@@ -60,10 +60,12 @@ class Aut extends AbstractController
         } elseif (!$pass->checkLatin()) {
             $_SESSION['warnings'][] = 'Пароль должен содержать латинские символы!';
             $ok = false;
-        } elseif (!$pass->checkUpperLowerSymbols()) {
-            $_SESSION['warnings'][] = 'Пароль должен содержать верхний и нижний регистр!';
-            $ok = false;
-        } elseif ($pass->checkSpaceSymbol()) {
+        }
+//        elseif (!$pass->checkUpperLowerSymbols()) {
+//            $_SESSION['warnings'][] = 'Пароль должен содержать верхний и нижний регистр!';
+//            $ok = false;
+//        }
+        elseif ($pass->checkSpaceSymbol()) {
             $_SESSION['warnings'][] = 'Пароль не должен содержать пробел!';
             $ok = false;
         } elseif (!$pass->containsNumbers()) {
@@ -80,7 +82,10 @@ class Aut extends AbstractController
         }
 
         if ($ok) {
-            $this->model->addNewUser($_POST['login'], $_POST['pass1'], $_POST['name'], 'guest');
+//            print_r($_POST);
+            $config = include __DIR__ . "/../../config.php";
+            $this->model->addNewUser($_POST['login'], md5($_POST['pass1'] . $config['salt']), $_POST['name'], 'guest');
+//            $this->model->addNewUser($_POST['login'], $_POST['pass1'], $_POST['name']);
             $this->redirect("?");
         } else {
             $_SESSION['regData'] = $_POST;
@@ -96,7 +101,9 @@ class Aut extends AbstractController
     {
         //print_r($_POST);
         //$_SESSION['user']
-        $user = $this->model->checkUser($_POST['login'], $_POST['pass']);
+//        $user = $this->model->checkUser($_POST['login'], $_POST['pass']);
+        $config = include __DIR__ . "/../../config.php";
+        $user = $this->model->checkUser($_POST['login'], md5($_POST['pass'] . $config['salt']));
 //        print_r($user);
         if (empty($user)) {
             $this->redirect("?type=Aut&action=show");

@@ -53,9 +53,15 @@ SQL;
         return $this->query("SELECT COUNT(*) AS 'C' FROM `$this->tableName` WHERE `login`='$login'")[0]['C'];
     }
 
-    public function addNewUser(string $login, string $pass, string $name, string $user_group): void
+    /**
+     * @throws \Exception
+     */
+    public function addNewUser(string $login, string $pass, string $name): void
     {
-        $this->runSQL("INSERT INTO `users`(`login`, `pass`, `name`, `user_group`) " .
-            "VALUES ('$login','$pass','$name','$user_group')");
+        $guestId = $this->query("SELECT `id` FROM `user_groups` WHERE `code` = 'guest'")[0]['id'];
+//        echo $sql = "INSERT INTO `users`(`login`, `pass`, `name`, `user_group`) " .
+//            "VALUES ('$login','$pass','$name','$guestId')";
+        $this->runSQL("INSERT INTO `users`(`login`, `pass`, `name`, `user_groups_id`) " .
+            "VALUES ('$login','$pass','$name','$guestId')");
     }
 }
