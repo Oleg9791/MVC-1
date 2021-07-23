@@ -10,7 +10,7 @@ use W1020\HTML\Select; ?>
             echo (new Select())
                     ->setName($field)
                     ->setData($this->data["groupList"])
-                    ->setSelected($this->data["row"]['user_groups_id'])
+                    ->setSelected($this->data["row"]['user_groups_id'] ?? "")
                     ->html() . '<br>';
 //            echo "<select name='$field'>";
 //            foreach ($this->data["groupList"] as $id => $name) {
