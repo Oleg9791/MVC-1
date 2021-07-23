@@ -2,11 +2,11 @@
 //print_r($this->data);
 ?>
 
-<form action="?type=<?= $this->data['controllerName'] ?>&action=edit&id=<?= $this->data["id"] ?>" method="post">
+<form action="<?= $this->data['action'] ?>" method="post">
     <?php
-    foreach ($this->data["row"] as $field => $value) {
+    foreach ($this->data["comments"] as $field => $value) {
+        echo $value . "<br>";
         if ($field == "user_groups_id") {
-            echo $this->data["comments"][$field] . "<br>";
             echo "<select name='$field'>";
             foreach ($this->data["groupList"] as $id => $name) {
                 echo "<option value='$id' " .
@@ -16,13 +16,9 @@
             echo "</select><br>";
 
         } else {
-            echo $this->data["comments"][$field] . "<br>";
-            echo "<input name='$field' value='$value'><br>";
+            echo "<input name='$field' value='" . ($this->data['row'][$field] ?? "") . "'><br>";
         }
     }
-    //    print_r($this->data["groupList"]);
     ?>
     <input type="submit" value="ok" class="btn btn-primary">
 </form>
-
-<!--123-->
