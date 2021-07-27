@@ -4,7 +4,7 @@
 namespace App\Controller;
 
 
-class UserGroups extends Table
+class Usergroups extends Table
 {
     protected string $tableName = "user_groups";
 }

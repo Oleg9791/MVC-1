@@ -1,0 +1,12 @@
+.news_text {
+    width: 500px;
+    height: 100px;
+    color: blueviolet;
+}
+
+.block_news_edit {
+    margin: 0 auto;
+    /*position: absolute;*/
+    /*left: 50%;*/
+    /*transform: translate(-50%, 0)*/
+}

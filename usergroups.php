@@ -7,7 +7,8 @@ return [
         "Opros",
         "Ved",
         "Users",
-        "UserGroups"
+        "Usergroups",
+        "News"
     ],
     "user" => [
         "Aut",
