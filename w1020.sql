@@ -2,10 +2,10 @@
 -- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Хост: 127.0.0.1:3306
--- Время создания: Июл 30 2021 г., 19:52
--- Версия сервера: 8.0.19
--- Версия PHP: 8.0.1
+-- Host: 127.0.0.1:3306
+-- Generation Time: Jul 30, 2021 at 08:46 PM
+-- Server version: 8.0.19
+-- PHP Version: 8.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `w1020`
+-- Database: `w1020`
 --
 CREATE DATABASE IF NOT EXISTS `w1020` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
 USE `w1020`;
@@ -26,7 +26,7 @@ USE `w1020`;
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `gb`
+-- Table structure for table `gb`
 --
 
 CREATE TABLE `gb` (
@@ -36,7 +36,7 @@ CREATE TABLE `gb` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Дамп данных таблицы `gb`
+-- Dumping data for table `gb`
 --
 
 INSERT INTO `gb` (`id`, `message`, `name`) VALUES
@@ -48,7 +48,7 @@ INSERT INTO `gb` (`id`, `message`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `news`
+-- Table structure for table `news`
 --
 
 CREATE TABLE `news` (
@@ -59,17 +59,18 @@ CREATE TABLE `news` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Дамп данных таблицы `news`
+-- Dumping data for table `news`
 --
 
 INSERT INTO `news` (`id`, `caption`, `text`, `picture`) VALUES
 (21, 'Погода', 'жара', '17QN.gif'),
-(22, 'Авто', '765654', 'image1.png');
+(22, 'Авто', '765654', 'image1.png'),
+(23, 'Обзор LEGO Creator: океан фантазии', 'В этом году исполняется 20 лет классической и одной из самых популярных серий LEGO Creator — это конструктор для детей на темы от маленьких диких зверушек до космических шаттлов. Параллельно существует линейка продвинутых наборов Creator Expert с удивительными моделями Колизея, автомобилями охотников за привидениями и потрясающими модульными домами. Рассказываем историю LEGO Creator, о ее самых впечатляющих наборах и о будущем LEGO для взрослых.', '714b963190fb2c83f1a4c81fbbd720df.jpeg');
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `opros`
+-- Table structure for table `opros`
 --
 
 CREATE TABLE `opros` (
@@ -81,7 +82,7 @@ CREATE TABLE `opros` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Дамп данных таблицы `opros`
+-- Dumping data for table `opros`
 --
 
 INSERT INTO `opros` (`id`, `name`, `meropriatie`, `comment`, `phone`) VALUES
@@ -92,7 +93,7 @@ INSERT INTO `opros` (`id`, `name`, `meropriatie`, `comment`, `phone`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -104,7 +105,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Дамп данных таблицы `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `login`, `pass`, `name`, `user_groups_id`) VALUES
@@ -124,7 +125,7 @@ INSERT INTO `users` (`id`, `login`, `pass`, `name`, `user_groups_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `user_groups`
+-- Table structure for table `user_groups`
 --
 
 CREATE TABLE `user_groups` (
@@ -134,7 +135,7 @@ CREATE TABLE `user_groups` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Дамп данных таблицы `user_groups`
+-- Dumping data for table `user_groups`
 --
 
 INSERT INTO `user_groups` (`id`, `name`, `code`) VALUES
@@ -145,7 +146,7 @@ INSERT INTO `user_groups` (`id`, `name`, `code`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `ved`
+-- Table structure for table `ved`
 --
 
 CREATE TABLE `ved` (
@@ -155,7 +156,7 @@ CREATE TABLE `ved` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Дамп данных таблицы `ved`
+-- Dumping data for table `ved`
 --
 
 INSERT INTO `ved` (`id`, `fio`, `zp`) VALUES
@@ -173,29 +174,29 @@ INSERT INTO `ved` (`id`, `fio`, `zp`) VALUES
 (559, 'Сидоров', 232);
 
 --
--- Индексы сохранённых таблиц
+-- Indexes for dumped tables
 --
 
 --
--- Индексы таблицы `gb`
+-- Indexes for table `gb`
 --
 ALTER TABLE `gb`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `news`
+-- Indexes for table `news`
 --
 ALTER TABLE `news`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `opros`
+-- Indexes for table `opros`
 --
 ALTER TABLE `opros`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -203,63 +204,63 @@ ALTER TABLE `users`
   ADD KEY `fk_users_user_groups_idx` (`user_groups_id`);
 
 --
--- Индексы таблицы `user_groups`
+-- Indexes for table `user_groups`
 --
 ALTER TABLE `user_groups`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `ved`
+-- Indexes for table `ved`
 --
 ALTER TABLE `ved`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT для сохранённых таблиц
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT для таблицы `gb`
+-- AUTO_INCREMENT for table `gb`
 --
 ALTER TABLE `gb`
   MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id', AUTO_INCREMENT=54;
 
 --
--- AUTO_INCREMENT для таблицы `news`
+-- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT для таблицы `opros`
+-- AUTO_INCREMENT for table `opros`
 --
 ALTER TABLE `opros`
   MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT 'id', AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT для таблицы `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT '№', AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT для таблицы `user_groups`
+-- AUTO_INCREMENT for table `user_groups`
 --
 ALTER TABLE `user_groups`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT для таблицы `ved`
+-- AUTO_INCREMENT for table `ved`
 --
 ALTER TABLE `ved`
   MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT '№', AUTO_INCREMENT=560;
 
 --
--- Ограничения внешнего ключа сохраненных таблиц
+-- Constraints for dumped tables
 --
 
 --
--- Ограничения внешнего ключа таблицы `users`
+-- Constraints for table `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `fk_users_user_groups` FOREIGN KEY (`user_groups_id`) REFERENCES `user_groups` (`id`);
