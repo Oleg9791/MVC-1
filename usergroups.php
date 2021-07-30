@@ -7,7 +7,8 @@ return [
         "Opros",
         "Ved",
         "Users",
-        "UserGroups"
+        "Usergroups",
+        "News"
     ],
     "user" => [
         "Aut",
@@ -18,6 +19,7 @@ return [
     ],
     "guest" => [
         "Aut",
-        "Main"
+        "Main",
+        "Shownews"
     ]
 ];

@@ -11,6 +11,11 @@
                             class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
+                <a class="nav-link<?= $this->data['controllerName'] == "Shownews" ? " active" : "" ?>"
+                   href="?type=Shownews&action=show">Просмотр новостей</a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link<?= $this->data['controllerName'] == "Aut" ? " active" : "" ?>"
                    href="?type=Aut&action=show">Войти</a>
             </li>
