@@ -4,8 +4,20 @@
 namespace App\Controller;
 
 
+use App\Model\ShowNewsModel;
+
+
 class Shownews extends News
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $config = include __DIR__ . "/../../config.php";
+        $config["table"] = $this->tableName;
+        $this->model = new ShowNewsModel($config);
+
+    }
+
     public function actionShowEdit(): void
     {
         $this->redirect("/");
@@ -43,7 +55,8 @@ class Shownews extends News
         $this
             ->view
             ->addData([
-                "new" => $this->model->getRow($_GET['id'])
+                "new" => $this->model->getRow($_GET['id']),
+                "comments" => $this->model->getNewsComments($_GET['id'])
             ])
             ->setTemplate("Shownews/new");
     }

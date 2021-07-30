@@ -14,18 +14,9 @@
                 <a class="nav-link<?= $this->data['controllerName'] == "News" ? " active" : "" ?>"
                    href="?type=news&action=show">Показать таблицу News</a>
             </li>
-
             <li class="nav-item">
-                <a class="nav-link<?= $this->data['controllerName'] == "Ved" ? " active" : "" ?>"
-                   href="?type=Ved&action=show">Показать таблицу Ved</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link<?= $this->data['controllerName'] == "Gb" ? " active" : "" ?>"
-                   href="?type=Gb&action=show">Показать таблицу Gb</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link<?= $this->data['controllerName'] == "Opros" ? " active" : "" ?>"
-                   href="?type=Opros&action=show">Показать таблицу Opros</a>
+                <a class="nav-link<?= $this->data['controllerName'] == "Comments" ? " active" : "" ?>"
+                   href="?type=comments&action=show">Показать таблицу Comments</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link<?= $this->data['controllerName'] == "Users" ? " active" : "" ?>"
