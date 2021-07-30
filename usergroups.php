@@ -2,13 +2,11 @@
 return [
     "admin" => [
         "Aut",
-        "Gb",
         "Main",
-        "Opros",
-        "Ved",
         "Users",
         "Usergroups",
-        "News"
+        "News",
+        "Comments"
     ],
     "user" => [
         "Aut",

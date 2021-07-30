@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Jul 30, 2021 at 08:46 PM
--- Server version: 8.0.19
--- PHP Version: 8.0.1
+-- Хост: 127.0.0.1:3306
+-- Время создания: Июл 30 2021 г., 22:02
+-- Версия сервера: 8.0.24
+-- Версия PHP: 8.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `w1020`
+-- База данных: `w1020`
 --
 CREATE DATABASE IF NOT EXISTS `w1020` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
 USE `w1020`;
@@ -26,29 +26,40 @@ USE `w1020`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `gb`
+-- Структура таблицы `comments`
+--
+
+CREATE TABLE `comments` (
+  `id` int NOT NULL COMMENT '№',
+  `text` text COLLATE utf8_bin NOT NULL COMMENT 'Комментарий',
+  `news_id` int NOT NULL,
+  `users_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
+
+--
+-- Дамп данных таблицы `comments`
+--
+
+INSERT INTO `comments` (`id`, `text`, `news_id`, `users_id`) VALUES
+(1, 'лоашгршнпануапшуцнпаунцшпашныиашнауншан', 24, 18),
+(2, '12121212121цвцвц\r\nцуацуауауауауау', 24, 18);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `gb`
 --
 
 CREATE TABLE `gb` (
   `id` int UNSIGNED NOT NULL COMMENT 'id',
   `message` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'Сообщение',
   `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'Имя'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data for table `gb`
---
-
-INSERT INTO `gb` (`id`, `message`, `name`) VALUES
-(50, 'Привет!', 'Leo'),
-(51, 'Привет!!!', 'Ольга'),
-(52, 'Как дела?', 'Макс'),
-(53, 'Всё хорошо.', 'Костя');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `news`
+-- Структура таблицы `news`
 --
 
 CREATE TABLE `news` (
@@ -56,21 +67,20 @@ CREATE TABLE `news` (
   `caption` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'Заголовок',
   `text` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'Новости',
   `picture` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'Имя файла'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `news`
+-- Дамп данных таблицы `news`
 --
 
 INSERT INTO `news` (`id`, `caption`, `text`, `picture`) VALUES
-(21, 'Погода', 'жара', '17QN.gif'),
-(22, 'Авто', '765654', 'image1.png'),
-(23, 'Обзор LEGO Creator: океан фантазии', 'В этом году исполняется 20 лет классической и одной из самых популярных серий LEGO Creator — это конструктор для детей на темы от маленьких диких зверушек до космических шаттлов. Параллельно существует линейка продвинутых наборов Creator Expert с удивительными моделями Колизея, автомобилями охотников за привидениями и потрясающими модульными домами. Рассказываем историю LEGO Creator, о ее самых впечатляющих наборах и о будущем LEGO для взрослых.', '714b963190fb2c83f1a4c81fbbd720df.jpeg');
+(24, 'Bentley Continental GT II Рестайлинг Concours Series', 'Отличное состояние автомобиля! Продает второй владелец. Оригинальное ЛКП. Лицевая часть автомобиля вся в бронепленке с момента покупки! Всегда своеврменное обслуживание. Под капотом Bentley Continental GT находится V-образный 8-цилиндровый двигатель с двумя турбонагнетателями мощностью 507 л.с. Специальное исполнение \"Concours Series\" обладает уникальным сочетанием изысканных элементов отделки, таких как эффектная контрастная прострочка, вышивка на комфортных подголовниках и металлические накладки на пороги с эмблемой Concours Series. Только гаражное хранение. Возможен осмотр на любом Вашем СТО. Примем Ваш автомобиль в зачет.', 'e41467edaad1ea58064c7b78fd2b6e13.jpeg'),
+(25, 'На что сейчас снижена цена в Каталоге? Свежая подборка скидок', 'Продолжаем добрую традицию с подборками скидок. Просмотрели страницу всех суперцен и отобрали для вас самые лучшие предложения, которые сейчас выгодно купить в Каталоге. Получилось много полезных товаров для дома, новые наушники Redmi AirDots и популярные микрофоны HyperX.\r\nЕсли вдруг вы видите полотно из картинок, то отключите, пожалуйста, ваш блокировщик рекламы. За ним прячутся ссылки на товар в Каталоге с актуальной ценой и описанием.', '70641421d5446695bb4ea396d560c31c.jpeg');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `opros`
+-- Структура таблицы `opros`
 --
 
 CREATE TABLE `opros` (
@@ -79,21 +89,12 @@ CREATE TABLE `opros` (
   `meropriatie` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'Мероприятие',
   `comment` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'Комментарии',
   `phone` int NOT NULL COMMENT 'Телефон'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data for table `opros`
---
-
-INSERT INTO `opros` (`id`, `name`, `meropriatie`, `comment`, `phone`) VALUES
-(1, '111', '111111111', '1111111111111111', 11111111),
-(3, '2', '2', '2', 2),
-(4, '2', 'День рождения', 'Круто', 2);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Структура таблицы `users`
 --
 
 CREATE TABLE `users` (
@@ -102,101 +103,81 @@ CREATE TABLE `users` (
   `pass` varchar(256) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'Пароль',
   `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'Имя',
   `user_groups_id` int NOT NULL COMMENT 'Группа'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `users`
+-- Дамп данных таблицы `users`
 --
 
 INSERT INTO `users` (`id`, `login`, `pass`, `name`, `user_groups_id`) VALUES
-(5, 'admin', '627226e5d3a54d6c4468b4e07ff9da68', 'Анатолий Николаевич', 1),
-(6, 'user2', '627226e5d3a54d6c4468b4e07ff9da68', 'Nina', 3),
-(7, 'den', '627226e5d3a54d6c4468b4e07ff9da68', 'Denis', 1),
-(8, 'fgh', '627226e5d3a54d6c4468b4e07ff9da68', 'Inna', 1),
-(9, 'user111', '627226e5d3a54d6c4468b4e07ff9da68', 'Lena', 1),
-(10, 'user333', '627226e5d3a54d6c4468b4e07ff9da68', 'Tina', 1),
-(11, 'pav', '627226e5d3a54d6c4468b4e07ff9da68', 'pavel', 1),
-(12, 'vova', '2588c10b332e6d8e78b247ce568aa7fd', 'vova', 1),
-(13, 'masa1', 'c3f8a32191bb98320685dd1fe9f13cab', 'Masa', 1),
-(14, 'val', '3104f81bf40625a490840c4ce7e5c186', 'Valera', 2),
-(15, 'nata1', '21d03e086752e371dc8b867d035a69fa', 'Nata', 3),
-(16, 'nina123', '627226e5d3a54d6c4468b4e07ff9da68', 'Nina', 3);
+(17, 'admin', '3c2b7b63bc7531b7bb544f33e4deba6e', 'Иван Иванович', 1),
+(18, 'user', '50721e8a26c9ecb89fc8e62754869158', 'Максим Петрович', 2);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_groups`
+-- Структура таблицы `user_groups`
 --
 
 CREATE TABLE `user_groups` (
   `id` int NOT NULL,
   `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'Название',
   `code` varchar(10) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'Группа'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `user_groups`
+-- Дамп данных таблицы `user_groups`
 --
 
 INSERT INTO `user_groups` (`id`, `name`, `code`) VALUES
-(1, 'Администраторы', 'admin'),
-(2, 'Пользователи', 'user'),
+(1, 'Администратор', 'admin'),
+(2, 'Пользователь', 'user'),
 (3, 'Гости', 'guest');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ved`
+-- Структура таблицы `ved`
 --
 
 CREATE TABLE `ved` (
   `id` int NOT NULL COMMENT '№',
   `fio` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT 'ФИО',
   `zp` float DEFAULT NULL COMMENT 'Зарплата'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `ved`
---
-
-INSERT INTO `ved` (`id`, `fio`, `zp`) VALUES
-(1, 'Viktor', 1500),
-(57, 'Maxim', 12000000),
-(59, 'Sergo', 324),
-(60, 'Sonia', 8999),
-(61, 'Zenona', 78),
-(62, 'Gerero', 300),
-(65, 'Sten', 769),
-(66, 'Aron', 970),
-(72, '222', 250),
-(555, 'Leo', 460),
-(556, 'del', 250),
-(559, 'Сидоров', 232);
-
---
--- Indexes for dumped tables
+-- Индексы сохранённых таблиц
 --
 
 --
--- Indexes for table `gb`
+-- Индексы таблицы `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_comments_news1_idx` (`news_id`),
+  ADD KEY `fk_comments_users1_idx` (`users_id`);
+
+--
+-- Индексы таблицы `gb`
 --
 ALTER TABLE `gb`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `news`
+-- Индексы таблицы `news`
 --
 ALTER TABLE `news`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `opros`
+-- Индексы таблицы `opros`
 --
 ALTER TABLE `opros`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Индексы таблицы `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -204,63 +185,76 @@ ALTER TABLE `users`
   ADD KEY `fk_users_user_groups_idx` (`user_groups_id`);
 
 --
--- Indexes for table `user_groups`
+-- Индексы таблицы `user_groups`
 --
 ALTER TABLE `user_groups`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `ved`
+-- Индексы таблицы `ved`
 --
 ALTER TABLE `ved`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT для сохранённых таблиц
 --
 
 --
--- AUTO_INCREMENT for table `gb`
+-- AUTO_INCREMENT для таблицы `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT '№', AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT для таблицы `gb`
 --
 ALTER TABLE `gb`
   MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id', AUTO_INCREMENT=54;
 
 --
--- AUTO_INCREMENT for table `news`
+-- AUTO_INCREMENT для таблицы `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT for table `opros`
+-- AUTO_INCREMENT для таблицы `opros`
 --
 ALTER TABLE `opros`
   MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT 'id', AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT '№', AUTO_INCREMENT=17;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT '№', AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT for table `user_groups`
+-- AUTO_INCREMENT для таблицы `user_groups`
 --
 ALTER TABLE `user_groups`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `ved`
+-- AUTO_INCREMENT для таблицы `ved`
 --
 ALTER TABLE `ved`
   MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT '№', AUTO_INCREMENT=560;
 
 --
--- Constraints for dumped tables
+-- Ограничения внешнего ключа сохраненных таблиц
 --
 
 --
--- Constraints for table `users`
+-- Ограничения внешнего ключа таблицы `comments`
+--
+ALTER TABLE `comments`
+  ADD CONSTRAINT `fk_comments_news1` FOREIGN KEY (`news_id`) REFERENCES `news` (`id`),
+  ADD CONSTRAINT `fk_comments_users1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `fk_users_user_groups` FOREIGN KEY (`user_groups_id`) REFERENCES `user_groups` (`id`);
