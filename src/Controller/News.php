@@ -29,12 +29,13 @@ class News extends Table
     public function actionAdd(): void
     {
 //        print_r($_FILES);
+//        unset($_POST['picture']);
+        $_POST['picture'] = $_FILES['picture']['name'];
+        $id = $this->model->ins($_POST);
         move_uploaded_file(
             $_FILES['picture']['tmp_name'],
-            __DIR__ . "/../../public/images/news/" . $_FILES['picture']['name']
+            __DIR__ . "/../../public/images/news/{$id}_" . $_FILES['picture']['name']
         );
-        unset($_POST['picture']);
-        $this->model->ins($_POST);
         $this->redirect("?type={$this->getCurrentClass()}&action=show");
 
     }

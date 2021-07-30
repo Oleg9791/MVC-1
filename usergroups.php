@@ -19,6 +19,7 @@ return [
     ],
     "guest" => [
         "Aut",
-        "Main"
+        "Main",
+        "Shownews"
     ]
 ];

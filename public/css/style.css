@@ -10,3 +10,9 @@
     /*left: 50%;*/
     /*transform: translate(-50%, 0)*/
 }
+
+.news_image {
+    width: 100px;
+    height: auto;
+    border: 1px #e22b80 solid;
+}
