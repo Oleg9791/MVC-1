@@ -39,5 +39,4 @@ class News extends Table
         $this->redirect("?type={$this->getCurrentClass()}&action=show");
 
     }
-
 }

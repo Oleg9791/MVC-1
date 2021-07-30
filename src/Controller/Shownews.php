@@ -37,4 +37,14 @@ class Shownews extends News
         $this->view->setTemplate("Shownews/show");
 
     }
+
+    public function actionShowNews(): void
+    {
+        $this
+            ->view
+            ->addData([
+                "new" => $this->model->getRow($_GET['id'])
+            ])
+            ->setTemplate("Shownews/new");
+    }
 }
