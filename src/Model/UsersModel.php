@@ -33,7 +33,11 @@ SQL;
         );
     }
 
-    public function getGroupList()
+    /**
+     * @return array <int|string, array>
+     * @throws \Exception
+     */
+    public function getGroupList() : array
     {
         $data = $this->query("SELECT `id`,`name` FROM `user_groups`");
         $arr = [];

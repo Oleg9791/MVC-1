@@ -84,7 +84,7 @@ class Aut extends AbstractController
         if ($ok) {
 //            print_r($_POST);
             $config = include __DIR__ . "/../../config.php";
-            $this->model->addNewUser($_POST['login'], md5($_POST['pass1'] . $config['salt']), $_POST['name'], 'guest');
+            $this->model->addNewUser($_POST['login'], md5($_POST['pass1'] . $config['salt']), $_POST['name']);
 //            $this->model->addNewUser($_POST['login'], $_POST['pass1'], $_POST['name']);
             $this->redirect("?");
         } else {
