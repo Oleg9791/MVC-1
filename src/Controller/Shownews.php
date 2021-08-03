@@ -60,4 +60,16 @@ class Shownews extends News
             ])
             ->setTemplate("Shownews/new");
     }
+
+    public function actionAddComment(): void
+    {
+//        print_r($_POST);
+//        print_r($_SESSION);
+        if (isset($_SESSION["user"]["id"])) {
+            $this->model->addComment($_POST["text"], $_POST["news_id"], $_SESSION["user"]["id"]);
+            $this->redirect("?type=shownews&action=shownews&id=" . $_POST["news_id"]);
+        } else {
+            $this->redirect("/");
+        }
+    }
 }

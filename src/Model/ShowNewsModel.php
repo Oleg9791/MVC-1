@@ -24,4 +24,10 @@ SQL;
 
         return $this->query($sql);
     }
+
+    public function addComment($text, $news_id, $users_id): void
+    {
+        $sql = "INSERT INTO `comments`(`text`, `news_id`, `users_id`) VALUES ('$text', $news_id, $users_id)";
+        $this->runSQL($sql);
+    }
 }
