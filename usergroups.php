@@ -10,10 +10,8 @@ return [
     ],
     "user" => [
         "Aut",
-        "Gb",
         "Main",
-        "Opros",
-        "Ved"
+        "Shownews"
     ],
     "guest" => [
         "Aut",

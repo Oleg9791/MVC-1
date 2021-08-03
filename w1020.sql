@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июл 30 2021 г., 22:02
+-- Время создания: Авг 03 2021 г., 20:14
 -- Версия сервера: 8.0.24
--- Версия PHP: 8.0.8
+-- Версия PHP: 8.0.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,10 +30,10 @@ USE `w1020`;
 --
 
 CREATE TABLE `comments` (
-  `id` int NOT NULL COMMENT '№',
-  `text` text COLLATE utf8_bin NOT NULL COMMENT 'Комментарий',
-  `news_id` int NOT NULL,
-  `users_id` int NOT NULL
+                            `id` int NOT NULL COMMENT '№',
+                            `text` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'Комментарий',
+                            `news_id` int NOT NULL,
+                            `users_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
 
 --
@@ -42,19 +42,11 @@ CREATE TABLE `comments` (
 
 INSERT INTO `comments` (`id`, `text`, `news_id`, `users_id`) VALUES
 (1, 'лоашгршнпануапшуцнпаунцшпашныиашнауншан', 24, 18),
-(2, '12121212121цвцвц\r\nцуацуауауауауау', 24, 18);
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `gb`
---
-
-CREATE TABLE `gb` (
-  `id` int UNSIGNED NOT NULL COMMENT 'id',
-  `message` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'Сообщение',
-  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'Имя'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
+(2, '12121212121цвцвц\r\nцуацуауауауауау', 24, 18),
+(3, 'hgj', 24, 18),
+(4, 'add comment', 24, 20),
+(5, 'add', 25, 20),
+(6, 'news', 25, 20);
 
 -- --------------------------------------------------------
 
@@ -63,10 +55,10 @@ CREATE TABLE `gb` (
 --
 
 CREATE TABLE `news` (
-  `id` int NOT NULL,
-  `caption` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'Заголовок',
-  `text` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'Новости',
-  `picture` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'Имя файла'
+                        `id` int NOT NULL,
+                        `caption` varchar(250) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'Заголовок',
+                        `text` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'Новости',
+                        `picture` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'Имя файла'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
 
 --
@@ -80,29 +72,15 @@ INSERT INTO `news` (`id`, `caption`, `text`, `picture`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `opros`
---
-
-CREATE TABLE `opros` (
-  `id` int NOT NULL COMMENT 'id',
-  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'Имя',
-  `meropriatie` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'Мероприятие',
-  `comment` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'Комментарии',
-  `phone` int NOT NULL COMMENT 'Телефон'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
-
--- --------------------------------------------------------
-
---
 -- Структура таблицы `users`
 --
 
 CREATE TABLE `users` (
-  `id` int NOT NULL COMMENT '№',
-  `login` varchar(15) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'Логин',
-  `pass` varchar(256) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'Пароль',
-  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'Имя',
-  `user_groups_id` int NOT NULL COMMENT 'Группа'
+                         `id` int NOT NULL COMMENT '№',
+                         `login` varchar(15) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'Логин',
+                         `pass` varchar(256) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'Пароль',
+                         `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'Имя',
+                         `user_groups_id` int NOT NULL COMMENT 'Группа'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
 
 --
@@ -111,7 +89,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `login`, `pass`, `name`, `user_groups_id`) VALUES
 (17, 'admin', '3c2b7b63bc7531b7bb544f33e4deba6e', 'Иван Иванович', 1),
-(18, 'user', '50721e8a26c9ecb89fc8e62754869158', 'Максим Петрович', 2);
+(18, 'user', '50721e8a26c9ecb89fc8e62754869158', 'Максим Петрович', 2),
+(20, 'user2', '7de7c0e0f80506e1a3943a343bdcee6d', 'USER', 2);
 
 -- --------------------------------------------------------
 
@@ -120,9 +99,9 @@ INSERT INTO `users` (`id`, `login`, `pass`, `name`, `user_groups_id`) VALUES
 --
 
 CREATE TABLE `user_groups` (
-  `id` int NOT NULL,
-  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'Название',
-  `code` varchar(10) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'Группа'
+                               `id` int NOT NULL,
+                               `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'Название',
+                               `code` varchar(10) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'Группа'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
 
 --
@@ -134,18 +113,6 @@ INSERT INTO `user_groups` (`id`, `name`, `code`) VALUES
 (2, 'Пользователь', 'user'),
 (3, 'Гости', 'guest');
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `ved`
---
-
-CREATE TABLE `ved` (
-  `id` int NOT NULL COMMENT '№',
-  `fio` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT 'ФИО',
-  `zp` float DEFAULT NULL COMMENT 'Зарплата'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
-
 --
 -- Индексы сохранённых таблиц
 --
@@ -154,33 +121,21 @@ CREATE TABLE `ved` (
 -- Индексы таблицы `comments`
 --
 ALTER TABLE `comments`
-  ADD PRIMARY KEY (`id`),
+    ADD PRIMARY KEY (`id`),
   ADD KEY `fk_comments_news1_idx` (`news_id`),
   ADD KEY `fk_comments_users1_idx` (`users_id`);
-
---
--- Индексы таблицы `gb`
---
-ALTER TABLE `gb`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `news`
 --
 ALTER TABLE `news`
-  ADD PRIMARY KEY (`id`);
-
---
--- Индексы таблицы `opros`
---
-ALTER TABLE `opros`
-  ADD PRIMARY KEY (`id`);
+    ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
+    ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `login` (`login`),
   ADD KEY `fk_users_user_groups_idx` (`user_groups_id`);
 
@@ -188,13 +143,7 @@ ALTER TABLE `users`
 -- Индексы таблицы `user_groups`
 --
 ALTER TABLE `user_groups`
-  ADD PRIMARY KEY (`id`);
-
---
--- Индексы таблицы `ved`
---
-ALTER TABLE `ved`
-  ADD PRIMARY KEY (`id`);
+    ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT для сохранённых таблиц
@@ -204,43 +153,25 @@ ALTER TABLE `ved`
 -- AUTO_INCREMENT для таблицы `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT '№', AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT для таблицы `gb`
---
-ALTER TABLE `gb`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id', AUTO_INCREMENT=54;
+    MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT '№', AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT для таблицы `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
-
---
--- AUTO_INCREMENT для таблицы `opros`
---
-ALTER TABLE `opros`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT 'id', AUTO_INCREMENT=5;
+    MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT '№', AUTO_INCREMENT=19;
+    MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT '№', AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT для таблицы `user_groups`
 --
 ALTER TABLE `user_groups`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT для таблицы `ved`
---
-ALTER TABLE `ved`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT '№', AUTO_INCREMENT=560;
+    MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
@@ -250,14 +181,14 @@ ALTER TABLE `ved`
 -- Ограничения внешнего ключа таблицы `comments`
 --
 ALTER TABLE `comments`
-  ADD CONSTRAINT `fk_comments_news1` FOREIGN KEY (`news_id`) REFERENCES `news` (`id`),
+    ADD CONSTRAINT `fk_comments_news1` FOREIGN KEY (`news_id`) REFERENCES `news` (`id`),
   ADD CONSTRAINT `fk_comments_users1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `users`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `fk_users_user_groups` FOREIGN KEY (`user_groups_id`) REFERENCES `user_groups` (`id`);
+    ADD CONSTRAINT `fk_users_user_groups` FOREIGN KEY (`user_groups_id`) REFERENCES `user_groups` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
